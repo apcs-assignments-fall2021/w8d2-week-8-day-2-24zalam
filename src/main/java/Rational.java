@@ -26,33 +26,55 @@ public class Rational {
     // (When you write the simplify method later on, you should
     // also call it in this method to return the simplified result)
     public static Rational add(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int numersum = (r.numerator*s.denominator) + (s.numerator*r.denominator);
+        int denomsum=(r.denominator*s.denominator);
+        Rational rr = new Rational(numersum,denomsum);
+        simplify(rr);
+        return rr;
+
+
+
     }
 
+    //3/4+5/6
+//3*6+5*4
     // This method takes two Rationals, subtracts thems up, 
     // and returns a Rational equal to the difference
     public static Rational subtract(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int numersum = (r.numerator*s.denominator) - (s.numerator*r.denominator);
+        int denomsum=(r.denominator*s.denominator);
+        Rational rr = new Rational(numersum,denomsum);
+        simplify(rr);
+        return rr;
     }
     
     public static Rational multiply(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+
+        Rational rr = new Rational(r.numerator*s.numerator,r.denominator*s.denominator);
+        simplify(rr);
+        return rr;
+
     }
     
     public static Rational divide(Rational r, Rational s) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        Rational rr = new Rational(r.numerator*s.denominator,r.denominator*s.numerator);
+        simplify(rr);
+        return rr;
     }
+    //2/3 / 4/5
+    //2/3 * 5/4
 
     // Finds the greatest common factor between a and b
     // To find the greatest common factor, find the largest number x
     // such that a and b are both multiples of x
     public static int greatestCommonFactor(int a, int b){
-        // REPLACE WITH YOUR CODE HERE
-        return 1;
+        int max = 1;
+        for (int i = 1; i <= a; i++) {
+            if (a % i == 0 && b % i == 0) {
+                max = i;
+            }
+        }
+        return max;
     }
 
     // This method is given a rational, and returns a simplified version
@@ -61,8 +83,11 @@ public class Rational {
     // e.g. simplify(2/4) => 1/2
     //      simplify(1/2) => 1/2
     public static Rational simplify(Rational r) {
-        // REPLACE WITH YOUR CODE HERE
-        return null;
+        int gcf = greatestCommonFactor(r.numerator, r.denominator);
+        r.numerator = r.numerator / gcf;
+        r.denominator = r.denominator / gcf;
+        Rational rr = new Rational(r.numerator, r.denominator);
+        return rr;
     }
 
     // This following method is NOT static, we'll talk about it next class!
